@@ -1,0 +1,219 @@
+import java.io.*;
+
+//---------------------------------------------------
+// An object of class PairList is a list of pairs
+// (j,w) where j is an integer and w is a real number.
+//
+// For example, a PairList might be [(2, 5.5), (9, 4.0)].
+//
+// When you create a PairList, it is empty.  Operations
+// include the following.
+//
+//   L.isEmpty()
+//	This yields true of L is an empty list
+//
+//   L.headVertex()
+//	This yields the integer value in the head of list L
+//
+//   L.headWeight()
+//	This yields the real value in the head of list L
+//
+//   L.tail()
+//	This yields the tail of list L
+//
+//   L.length()
+//	This yields the length of list L
+//
+//   L.addToFront(x,y)
+//	This yields the list that you get from L by adding pair
+//	(x,y) to the front of L.  It does not change L.
+//
+//   L.print(System.out)
+//	This prints list L on the standard output.
+//
+// Example:
+//   PairList L = new PairList();
+//   L = L.addToFront(4, 9.5);	// Now L is list [(4, 9.5)].
+//   L = L.addToFront(3, 1.4);	// Now L is list [(3, 1.4), (4, 9.5)].
+//   L = L.addToFront(2, 5.0);	// Now L is list [(2, 5.0), (3, 1.4), (4, 9.5)].
+//
+//   PairList t = L.tail();	// t is list [(3, 1.4), (4, 9.5)].
+//   PairList M = L.addToFront(1, 2.5);
+//				// M is list [(1, 2.5), (2, 5.0), (3, 1.4), (4, 9.5)].
+//
+//   int v  = L.headVertex();	// v  = 2
+//   int w  = L.headWeight();	// w  = 5.0
+//   int tv = t.headVertex();	// tv = 3
+//   int tw = t.headWeight();	// tw = 1.4
+//
+//   L.print(System.out);	// Prints [(2, 5.0), (3, 1.4), (4, 9.5)]
+//---------------------------------------------------
+
+public class PairList
+{
+    private PairListCell list;
+
+    //--------------------------------------
+    //              Constructor
+    //--------------------------------------
+    // A new PairList object is an empty list.
+    //--------------------------------------
+
+    public PairList()
+    {
+	   list = null;
+    }
+
+    //--------------------------------------
+    //              Private Constructor
+    //--------------------------------------
+    // Create a new PairList object with
+    // list lst.
+    //--------------------------------------
+
+    private PairList(PairListCell lst)
+    {
+	   list = lst;
+    }
+
+    //-----------------------------------------------
+    //              isEmpty
+    //-----------------------------------------------
+    // L.isEmpty() returns true if L is an
+    // empty list.
+    //-----------------------------------------------
+
+    public boolean isEmpty()
+    {
+	   return list == null;
+    }
+
+    //-----------------------------------------------
+    //              headVertex
+    //-----------------------------------------------
+    // L.headVertex() returns the integer value in the
+    // first pair of list L.
+    //
+    // Requirement: L must be nonempty.
+    //-----------------------------------------------
+
+    public int headVertex()
+    {
+	return list.ival;
+    }
+
+    //-----------------------------------------------
+    //              headWeight
+    //-----------------------------------------------
+    // L.headWeight() returns the real number in the first 
+    // pair of list L.
+    //
+    // Requirement: L must be nonempty.
+    //-----------------------------------------------
+
+    public double headWeight()
+    {
+	return list.dval;
+    }
+
+    //-----------------------------------------------
+    //              tail
+    //-----------------------------------------------
+    // L.tail() returns the list obtained by
+    // removing the head of list L.
+    //
+    // Requirement: L must be nonempty.
+    //-----------------------------------------------
+
+    public PairList tail()
+    {
+	return new PairList(list.next);
+    }
+
+    //-----------------------------------------------
+    //              addToFront
+    //-----------------------------------------------
+    // L.addToFront(j,w) returns the list obtained
+    // by adding pair (j,w) to the front of list L.
+    //
+    // Important: This function does not change L.  It
+    // returns the new list.
+    //-----------------------------------------------
+
+    public PairList addToFront(int j, double w)
+    {
+	return new PairList(new PairListCell(j, w, list));
+    }
+
+    //-----------------------------------------------
+    //              length
+    //-----------------------------------------------
+    // length(L) returns the number of items
+    // that L has.
+    //-----------------------------------------------
+
+    public int length()
+    {
+	if(list == null)
+	{
+	    return 0;
+	}
+	else
+	{
+	    return 1 + tail().length();
+	}
+    }
+
+    //------------------------------------------------
+    //              print
+    //------------------------------------------------
+    // L.print(F) prints list L on print
+    // stream F.  To print L on the standard
+    // output, use
+    //    L.print(System.out);
+    //
+    // This function does not print a newline character.
+    //------------------------------------------------
+
+    public void print(PrintStream F)
+    {
+	PairListCell rest;
+
+	F.print("[");
+	for(rest = list; rest != null; rest = rest.next)
+	{
+	    F.print("(");
+	    F.print(rest.ival);
+            F.print(", ");
+	    F.print(rest.dval);
+	    F.print(")");
+	    if(rest.next != null) 
+	    {
+		F.print(", ");
+	    }
+	}
+	F.print("]");
+    }
+  
+}
+
+
+//---------------------------------------------------
+// An object of class PairListCell is a single cell
+// in a PairList.  The empty list is represented
+// by null.
+//---------------------------------------------------
+
+class PairListCell
+{
+    public int          ival;
+    public double       dval;
+    public PairListCell next;
+
+    public PairListCell(int i, double d, PairListCell n)
+    {
+	      ival = i;
+         dval = d;
+	      next = n;
+    }
+}

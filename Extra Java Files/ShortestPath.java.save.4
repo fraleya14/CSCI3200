@@ -1,0 +1,95 @@
+// 		CSCI 3200
+//Author: 	Ashley Fraley
+//Assignment: 	5
+//File: 	ShortestPath.java
+//Tab stops:	3
+//Description:
+
+import java.util.*;
+
+public class Graph
+{
+	private PairList [] adj;
+	public Graph(int n)
+	{
+		adj = new PairListCell[n+1];
+	}
+	public  PairList getAdjacentList(int v)
+	{
+		return adj[v];
+	}
+	public void insert(int u, int v, double w)
+	{
+		adj[u] = adj[u].addToFront(v,w);
+		adj[v] = adj[v].addToFront(u,w);
+	}
+	public void printCell()
+	{
+		PairListCell rest;
+		for(rest = adj[i]; rest != null; rest = rest
+	}
+	public void show()
+	{
+		int length = this.length();
+		System.out.printf("There are  %d vertices. The adjacemcy 
+lists are as follows.\n", length);
+		for(int i = 1; i <length; i++)
+		{	
+			showPairList(adj[i], i);
+		} 
+	}
+	public void showPairList(PairList L, int u)
+	{
+		PairList rest = L;
+		System.out.printf("Vertex %d \n",u);
+		while(!rest.isEmpty())
+		{
+			int r = rest.headVertex();
+			double w = rest.headWeight();
+			System.out.printf("to %d, weight %f\n",v,w);
+		}
+	}
+	public static void main(String[] args)
+	{
+			
+		Scanner k = new Scanner(PairList [] adj);
+		int n = 3;
+		Graph m  = new Graph(n);
+		
+	}
+}
+
+public class ShortestPath
+{
+*/
+	private Graph g;
+	private int [] distance;
+	private PriorityQueue<Event> = new PriorityQueue();
+	private int start;
+	private int end;
+	public static Graph readGraph()
+	{
+		Scanner k = new Scanner(System.in);
+		int n = k.nextInt();
+		g = new Graph(n);
+		while(k.hasNextLine())
+		{
+			if(k.nextInt() == 0)
+			{
+				break;
+			}
+			int u = k.nextInt();
+			int v = k.nextInt();
+			double w = k.nextDouble();
+			insert(u,v,w);
+			
+		}
+		return m.show();
+		
+	}
+*/
+	public static void main(String[] args)
+	{
+		
+	}
+}

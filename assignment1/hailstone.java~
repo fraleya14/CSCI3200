@@ -1,0 +1,115 @@
+import java.util.*; 
+/* 
+CSCI 3200
+Assignment: 1
+Author:     Ashley Fraley
+File:       hailstone.java
+Tab stops:  3
+
+Description: Prints the entire hailstone sequence starting with n. Gives the length of
+the hailstone sequence starting at n. Returns the largest integer of the sequence. 
+Also returns the longest hailston sequence starting with a number up to n and the length.
+*/
+
+public class hailstone
+{
+ public static int z;
+ public static void main(String[] args)
+ {
+  Scanner keyboard = new Scanner(System.in);
+      System.out.println("What number shall I start with?");
+      int n = keyboard.nextInt();
+      System.out.println("The hailstone sequence starting at " + n + " is:");
+      sequence(n);
+      System.out.println("");
+      System.out.println("The length of the sequence is " + length(n) + ".");
+      System.out.println("The largest number in the sequence is " + max(n) + ".");
+      System.out.println("The longest hailstone sequence starting with a number up to " + n + " has length " + longestLength(n));
+    }
+    
+    
+//Next method:
+//Returns x which follows after n in the hailstone sequence
+
+ public static int next(int n)
+ { 
+  int x = 0;
+    if(n%2 == 0)
+    {
+     x = n/2;
+    }
+    else
+    {
+     x = (3*n)+1;
+    }
+    return x;
+ }
+    
+    
+//Sequence method:
+// Prints out the hailstone sequence starting with n 
+    
+ public static void sequence(int n)
+ {
+     z = n;
+     System.out.print(z + " ");
+     while (z > 1)
+     {
+       z = next(z);
+       System.out.print(z + " ");
+     }
+ }
+    
+    
+//Length method:
+// Returns the length of the hailstone sequence starting with n
+    
+    public static int length(int n)
+    {
+      int l = 1;
+      while (n > 1)
+      {
+        n = next(n);
+        l++;
+      }
+      return l;
+    }
+    
+    
+//Max method:
+// Returns x as the max of the hailstone sequence
+    
+    public static int max(int n)
+    {
+      x = n;
+      while(n>1)
+      {
+        n = next(n);
+        if(n>x)
+        {
+          x = n;
+        }
+      }
+      return x;
+    }
+
+    
+//longestLength:
+// Returns the length of the longest hailstone sequence starting at 
+// a number from 1 to n    
+    
+    public static int longestLength(int n)
+    {
+      x = length(n);
+      int m = x;
+      for( int i = 1; i<=n; i++)
+      {
+        int y = length(i);
+        if(y>m)
+        {
+          m = y;
+        }
+      }
+      return m;
+    }   
+}

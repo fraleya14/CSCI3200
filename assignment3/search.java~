@@ -1,0 +1,83 @@
+//Author:     Ashley Fraley 
+//Assignment: 3
+//File:       search.java
+//Tab Stops:
+
+//Description:
+
+import java.util.*;
+import java.io.*;
+
+public class search
+{
+  public static void main(String[] args)
+  {
+    try
+    {
+      InputStreamReader sr = new InputStreamReader(System.in);
+      BufferedReader in = new BufferedReader(sr);
+      String pattern;
+      int n = args.length;   
+      for(int i = 1; i < n - 1; i++)
+      {
+         pattern = in.readLine(); 
+         showFile(pattern,filename); 
+      }
+    }
+    catch(FileNotFoundException e)
+    {
+      System.out.println("Need a pattern");
+    }
+  }
+
+ 
+//Matches:
+// Takes in pattern and line. Returns true if pattern occurs in line.
+//Returns false if not.
+  static boolean matches(String pattern, String line)
+  {
+    String s;
+    boolean ok = false;
+    int m = line.indexOf(' ');
+    for(int i = 0; i < line.length(); i++)
+    {
+      s = line.substring(i,m).trim();
+      line = line.substring(m,line.length());
+      if(s.equalsIgnoreCase(pattern))
+      {
+         ok = true;
+      }
+      else
+      {
+         ok = false;
+      }
+    }
+    return ok; 
+  }
+
+
+//showFile:
+//Takes the pattern and the name of a file.
+  static void showFile(String pattern, File filename)
+  {
+    try 
+    {
+      Scanner k = new Scanner(filename);
+      String line;
+      while(k.hasNextLine())
+      {
+         line = k.nextLine();
+         if(matches(pattern,line))
+         {
+            System.out.println(filename);
+            System.out.println(line);
+         }
+      }
+      k.close();
+    }
+    catch (FileNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+  }
+}

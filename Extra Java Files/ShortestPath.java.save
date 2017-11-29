@@ -1,0 +1,31 @@
+/*
+CSCI 3200
+Assignment:        5
+Author: 	   Ashley Fraley
+File:		   ShortestPath.java
+Tab stops: 	   3
+Description: 
+*/
+
+
+import java.util.*;
+
+public class Graph
+{
+	private PairList adj = new PairList();
+	public Graph()
+	{
+		adj = new PairList(n+1);
+	}
+	public void getAdjacencyList()
+	{
+	}
+}
+
+public class ShortestPath
+{
+	public static void main(String[] args)
+	{
+		
+	}
+}

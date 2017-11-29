@@ -1,0 +1,29 @@
+public static void main(String [] args)
+{
+  int [] Height = new int[1000];
+  ReadInput(Height);
+  WriteOutput(Height);
+}
+
+static void ReadInput(int [] Height)
+{
+  for(int i = 0; i < 1000; i++)
+  {
+    Height[i] = 0;
+  }
+  boolean ok = true;
+  while(ok)
+  {
+    ok = ReadandInstallLine(Height);
+  }
+}
+
+static void ReadandInstallLine(int [] Height)
+{
+  
+}
+
+static void WriteOutput(int [] Height)
+{
+  
+}

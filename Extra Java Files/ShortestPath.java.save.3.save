@@ -1,0 +1,50 @@
+// 		CSCI 3200
+//Author: 	Ashley Fraley
+//Assignment: 	5
+//File: 	ShortestPath.java
+//Tab stops:	3
+//Description:
+
+import java.util.*;
+
+public class Graph
+{
+	private PairList [] adj;
+	public Graph(int n)
+	{
+		adj = new PairListCell[n+1];
+	}
+	public  PairList getAdjacentList(int v)
+	{
+		return adj[v];
+	}
+	public void insert(int u, int v, double w)
+	{
+		adj[u].addToFront(v,w);
+		adj[v].addToFront(u,w);
+	}
+	public void printCell()
+	{
+		PairListCell rest;
+		for(rest = adj[i]; rest != null; rest = rest
+	}
+	public void show()
+	{
+		int length = this.length();
+		System.out.printf("There are  %d vertices. The adjacemcy 
+lists are as follows.\n", length);
+		for(int i = 1; i <length; i++)
+		{	
+			System.out.printf("Vertex %d \n", i);
+			adj[i].printCell();
+		} 
+	}
+}
+
+public class ShortestPath
+{
+	public static void main(String[] args)
+	{
+		
+	}
+}
